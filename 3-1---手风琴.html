@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<!--<script src='js/myPackage.js'></script>-->
+		<script src="js/functionPackage.js"></script>
+		<style>
+			#outer{
+				width:100%;
+				height:460px;
+				background: lightskyblue;
+				padding-top:50px;
+			}
+			#inner{
+				width:1180px;
+				height: 400px;
+				margin:0px auto;
+				overflow: hidden;
+			}
+			#inner ul{
+				width:1300px;
+				height: 400px;
+			}
+			#inner ul li{
+				cursor: pointer;
+				font-size:40px;
+				width:240px;
+				height: 400px;
+				text-align: left;
+				line-height: 150px;
+				font-weight: bold;
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='outer'>
+			<div id='inner'>
+				<ul>
+					<li>小米电视</li>
+					<li>小米主机</li>
+					<li>小米单车</li>
+					<li>小米手机</li>
+					<li>小米抢购</li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			var lis = document.getElementsByTagName("li");
+			for(var i=0;i<lis.length;i++){
+				lis[i].style.background = 'url(img/'+(i+1)+'.jpg) left center no-repeat';
+				lis[i].onmouseover = function(){
+					//-排他思想
+					for(var j=0;j<lis.length;j++){
+						lis[j].style.fontSize="20px";
+						animate(lis[j],{width:100});
+					}
+					animate(this,{width:800});
+					this.style.fontSize="40px";
+				}
+				lis[i].onmouseout = function(){
+					for(var j=0;j<lis.length;j++){
+						lis[j].style.fontSize="40px";
+						animate(lis[j],{width:240});
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
